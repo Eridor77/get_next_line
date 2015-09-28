@@ -6,14 +6,15 @@
 /*   By: rlavallo <rlavallo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 16:30:30 by rlavallo          #+#    #+#             */
-/*   Updated: 2014/11/11 18:11:39 by rlavallo         ###   ########.fr       */
+/*   Updated: 2015/09/28 16:09:48 by rlavallo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-#include <unistd.h>
-#include <stdlib.h>
+# include <unistd.h>
+# include <stdlib.h>
+
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(char *s1, char *s2, unsigned int n);
 size_t	ft_strlen(const char *str);

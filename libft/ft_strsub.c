@@ -6,7 +6,7 @@
 /*   By: rlavallo <rlavallo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 16:29:42 by rlavallo          #+#    #+#             */
-/*   Updated: 2014/11/10 16:54:11 by rlavallo         ###   ########.fr       */
+/*   Updated: 2015/09/28 16:12:33 by rlavallo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	*ft_strsub(char const *s1, unsigned int start, size_t len)
 	while (i != len)
 	{
 		dest[i] = s1[start];
-		i++, start++;
+		i++;
+		start++;
 	}
 	dest[i] = '\0';
 	return (dest);

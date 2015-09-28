@@ -6,7 +6,7 @@
 #    By: rlavallo <rlavallo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/03 16:26:26 by rlavallo          #+#    #+#              #
-#    Updated: 2014/11/11 16:04:56 by rlavallo         ###   ########.fr        #
+#    Updated: 2015/09/28 16:07:47 by rlavallo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,4 +83,4 @@ fclean: clean
 re: fclean all
 
 norme: 
-	norminette $(SRC) includes/libft.h
+	@norminette $(SRC) includes/libft.h

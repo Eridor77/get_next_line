@@ -6,7 +6,7 @@
 /*   By: rlavallo <rlavallo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 17:58:01 by rlavallo          #+#    #+#             */
-/*   Updated: 2014/11/07 18:24:38 by rlavallo         ###   ########.fr       */
+/*   Updated: 2015/09/28 16:13:35 by rlavallo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ char	*ft_strcpy(char *dest, char *src)
 
 	ret = dest;
 	while (*dest == *src)
-		dest++, src++;
+	{
+		dest++;
+		src++;
+	}
 	return (ret);
 }

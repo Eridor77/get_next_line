@@ -6,7 +6,7 @@
 /*   By: rlavallo <rlavallo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 17:09:08 by rlavallo          #+#    #+#             */
-/*   Updated: 2014/11/11 16:02:30 by rlavallo         ###   ########.fr       */
+/*   Updated: 2015/09/28 16:11:50 by rlavallo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ char	*ft_strtrim(char const *s)
 	while (j != k)
 	{
 		dest[i] = s[j];
-		j++, i++;
+		j++;
+		i++;
 	}
 	dest[i] = '\0';
 	return (dest);

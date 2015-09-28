@@ -6,7 +6,7 @@
 /*   By: rlavallo <rlavallo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 16:09:19 by rlavallo          #+#    #+#             */
-/*   Updated: 2014/11/07 17:31:15 by rlavallo         ###   ########.fr       */
+/*   Updated: 2015/09/28 16:15:06 by rlavallo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 		if (*p1 != *p2)
 			return (*p1 - *p2);
 		else
-			p1++, p2++;
+		{
+			p1++;
+			p2++;
+		}
 	}
 	return (0);
 }

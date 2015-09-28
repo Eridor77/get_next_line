@@ -6,11 +6,11 @@
 /*   By: rlavallo <rlavallo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 15:45:24 by rlavallo          #+#    #+#             */
-/*   Updated: 2014/11/11 14:49:02 by rlavallo         ###   ########.fr       */
+/*   Updated: 2015/09/28 16:16:26 by rlavallo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	int is_negative;
 	int value;
