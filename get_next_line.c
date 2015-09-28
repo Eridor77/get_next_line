@@ -12,72 +12,62 @@
 
 #include "get_next_line.h"
 
-char	*ft_strndup(const char *s, size_t length)
+int		read_line(int const fd, char *buff, char *str[fd])
 {
-	char	*cpy;
-	size_t	i;
-
-	i = 0;
-	if (length > ft_strlen(s))
-		length = ft_strlen(s);
-	cpy = (char *)malloc((length + 1) * sizeof(char));
-	while (i != length)
+	char		*new;
+	char		*tmp;
+	int			ret;
+	
+	// Looping until finding '\n' or end of file
+	while (!(new = ft_strchr(str[fd], '\n')) && (ret = read(fd, buff, BUFF_SIZE)) > 0)
 	{
-		cpy[i] = s[i];
-		i++;
+		buff[ret] = '\0';
+		tmp = str[fd];
+		// Joining new string to previous one
+		str[fd] = ft_strjoin(tmp, buff);
+		ft_strdel(&tmp);
 	}
-	cpy[i] = '\0';
-	return (cpy);
-}
-
-size_t	len(const char *str, char c)
-{
-	size_t	i;
-	
-	i = 0;
-	while (str[i] && str[i] != c)
-		i++;
-	return (i);
-}
-
-char	*ft_strcdup(const char *str, char c)
-{
-	char	*new;
-	
-	new = ft_strndup(str, len(str, c));
-	return (new);
-}
-
-int		read_line(char **buf, int fd)
-{
-	char	buffer[BUFF_SIZE + 1];
-	int		ret;
-	
-	ret = 1;
-	while (ft_strstr(*buf, "\n") == 0 && ret != 0)
-	{
-		if ((ret = read(fd, buffer, BUFF_SIZE)) == -1)
-			return (-1);
-		buffer[ret] = '\0';
-		*buf = ft_strjoin(*buf, buffer);
-		ft_memset(buffer, 0, ret);
-	}
-	return (ret);
+	ft_strdel(&buff);
+	// Checking error and end of file
+	if (ret == -1)
+		return (-1);
+	if (!new && ret == 0)
+		return (0);
 }
 
 int		get_next_line(int const fd, char **line)
 {
-	static char	*buf;
-	char	*tmp;
-	int		ret;
+	static char	*str[1];
+	char		*buff;
+	char		*tmp;
+	int			ret;
 	
-	if (BUFF_SIZE >= MAX_SIZE_BUFFER || BUFF_SIZE <= 0 || fd == 1)
+	// Buffer creation
+	buff = ft_strnew(BUFF_SIZE);
+	// Checking parameters
+	if (fd < 0 || line == NULL || buff == NULL)
 		return (-1);
-	if ((ret = read_line(&buf, fd)) == -1)
+	// Checking if str is existing on the given file descriptor and allocatinf if not
+	if (str[fd] == NULL)
+		str[fd] = ft_strnew(1);
+	// Reading the line
+	ret = read_line(fd, buff, &*str);
+	// Checking error
+	if (ret == -1)
 		return (-1);
-	*line = ft_strcdup(buf, '\n');	
-	tmp = buf;
-	buf = ft_strdup(buf + len(buf, '\n') + 1);	
-	free(tmp);
-	return (ret == 0) ? 0 : 1;
+	// Checking end of file
+	if (ret == 0)
+	{
+		// Returning line read
+		*line = str[fd];
+		str[fd] = NULL;
+		return (0);
+	}
+	// Saving content before '\n'
+	*line = ft_strsub(str[fd], 0, (ft_strchr(str[fd], '\n') - str[fd]));
+	tmp = str[fd];
+	// Saving content after '\n'
+	str[fd] = ft_strdup(ft_strchr(tmp, '\n') + 1);
+	ft_strdel(&tmp);
+	return (1);
 }
