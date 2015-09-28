@@ -33,6 +33,7 @@ int		read_line(int const fd, char *buff, char *str[fd])
 		return (-1);
 	if (!new && ret == 0)
 		return (0);
+	return (1);
 }
 
 int		get_next_line(int const fd, char **line)
